@@ -5,13 +5,14 @@ import React, {
 import { 
   HashRouter, 
   Routes, 
-  Route 
+  Route
 } from 'react-router-dom';
 
 import Nav from './Nav';
 import Public from './Public';
 import Profile from './Profile';
 import Protected from './Protected';
+import MorePublic from './MorePublic';
 
 const Router = () => {
 
@@ -23,7 +24,7 @@ const Router = () => {
       window.addEventListener('hashchange', setRoute);
 
       // Return a cleanup function
-      return () =>  window.removeEventListener('hashchange', setRoute);
+      return () => window.removeEventListener('hashchange', setRoute);
     }, []
   );
 
@@ -31,6 +32,8 @@ const Router = () => {
     const location = window.location.href.split('/');
     const pathname = location[location.length-1];
 
+    // TODO fix setRoute, it's not getting called at all
+    console.log(pathname);
     setCurrent(pathname ? pathname : 'home');
   };
 
@@ -41,17 +44,25 @@ const Router = () => {
         current={current} 
       />
       <Routes>
-        <Route exact 
+        <Route 
+          exact 
           path="/" 
           element={<Public />}
         />
-        <Route exact 
+        <Route 
+          exact 
           path="/protected" 
           element={<Protected />} 
         />
-        <Route exact 
+        <Route
+          exact 
           path="/profile" 
           element={<Profile />}
+        />
+        <Route 
+          exact
+          path="/more-public"
+          element={<MorePublic />}
         />
         <Route 
           element={<Public />}
