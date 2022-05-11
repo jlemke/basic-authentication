@@ -3,7 +3,7 @@ import { Auth } from 'aws-amplify';
 import { 
   withAuthenticator, 
   AmplifySignOut 
-} from '@aws-amplify/ui-react';
+} from '@aws-amplify/ui-react/legacy';
 import Container from './Container';
 
 const Profile = () => {
@@ -18,12 +18,15 @@ const Profile = () => {
   
   const checkUser = async () => {
     try {
-      const data = await Auth.currentUserPoolUser()
-      const userInfo = { username: data.username, ...data.attributes, }
-      setUser(userInfo)
+      const data = await Auth.currentUserPoolUser();
+      const userInfo = { 
+        username: data.username, 
+        ...data.attributes
+      };
+      setUser(userInfo);
     } 
     catch (err) { 
-      console.log('error: ', err) 
+      console.error('error: ', err);
     }
   };
 
