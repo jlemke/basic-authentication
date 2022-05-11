@@ -1,9 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { 
+  useState, 
+  useEffect 
+} from 'react';
+
 import { Auth } from 'aws-amplify';
 import { Authenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 
+import { Button } from 'antd';
+
 import Container from './Container';
+
 
 const Profile = () => {
 
@@ -53,11 +60,13 @@ const Profile = () => {
             <h2>
               Email: {user.attributes.email}
             </h2>
-            <button 
+            <Button
+              type='primary'
+              size='large'
               onClick={signOut}
             >
               Sign out
-            </button>
+            </Button>
           </main>
         )}
       </Authenticator>
