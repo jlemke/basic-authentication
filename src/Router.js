@@ -15,34 +15,11 @@ import Protected from './Protected';
 import MorePublic from './MorePublic';
 
 const Router = () => {
-
-  const [current, setCurrent] = useState('home');
-
-  useEffect(
-    () => {
-      setRoute();
-      window.addEventListener('hashchange', setRoute);
-
-      // Return a cleanup function
-      return () => window.removeEventListener('hashchange', setRoute);
-    }, []
-  );
-
-  const setRoute = () => {
-    const location = window.location.href.split('/');
-    const pathname = location[location.length-1];
-
-    // TODO fix setRoute, it's not getting called at all
-    console.log(pathname);
-    setCurrent(pathname ? pathname : 'home');
-  };
-
+  
 
   return (
     <HashRouter>
-      <Nav 
-        current={current} 
-      />
+      <Nav />
       <Routes>
         <Route 
           exact 
