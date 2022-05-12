@@ -39,18 +39,6 @@ const Profile = () => {
 
   return (
     <Container>
-      <h1>
-        Profile
-      </h1>
-      <h2>
-        Username: {user.username}
-      </h2>
-      <h3>
-        Email: {user.email}
-      </h3>
-      <h4>
-        Phone: {user.phone_number}
-      </h4>
       <Authenticator>
         {({signOut, user }) => (          
           <main>
@@ -60,6 +48,9 @@ const Profile = () => {
             <h2>
               Email: {user.attributes.email}
             </h2>
+            <h3>
+              Phone: {user.attributes.phone_number}
+            </h3>
             <Button
               type='primary'
               size='large'
